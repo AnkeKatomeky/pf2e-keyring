@@ -1,0 +1,415 @@
+.pf2e-keyring-inline {
+    cursor: pointer;
+}
+
+.pf2e-keyring-inline[data-invalid] {
+    opacity: 0.65;
+}
+
+.pf2e-keyring-chat {
+    margin: 0;
+}
+
+.pf2e-keyring-chat--success {
+    border-left: 3px solid #3b7f4a;
+    padding-left: 8px;
+}
+
+.pf2e-keyring-chat--failure {
+    border-left: 3px solid #8a2c2c;
+    padding-left: 8px;
+}
+
+.pf2e-keyring-chat--gm {
+    border-left: 3px solid #bf8f00;
+    padding-left: 8px;
+    font-size: 0.92em;
+}
+
+.pf2e-keyring-chat--request .keyring-request-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.pf2e-keyring-chat--request button {
+    padding: 4px 10px;
+}
+
+.pf2e-keyring.application .window-content {
+    padding: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100% - 2px);
+}
+
+.pf2e-keyring.application {
+    max-height: 90vh;
+}
+
+.pf2e-keyring .keyring-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 12px;
+}
+
+.pf2e-keyring .keyring-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.pf2e-keyring .keyring-kicker {
+    margin: 0 0 4px;
+    font-size: 0.85em;
+    opacity: 0.75;
+}
+
+.pf2e-keyring .keyring-section {
+    border: 1px solid var(--color-border-light-tertiary, #ccc);
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.pf2e-keyring .keyring-section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.pf2e-keyring .keyring-section h3 {
+    margin: 0 0 8px;
+    font-size: 1em;
+}
+
+.pf2e-keyring .keyring-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92em;
+}
+
+.pf2e-keyring .keyring-table th,
+.pf2e-keyring .keyring-table td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 6px 8px;
+    vertical-align: top;
+}
+
+.pf2e-keyring .keyring-table th {
+    text-align: left;
+    font-weight: 600;
+}
+
+.pf2e-keyring .keyring-muted {
+    font-size: 0.9em;
+    opacity: 0.8;
+    margin-top: 2px;
+}
+
+.pf2e-keyring .keyring-gm-note {
+    font-size: 0.85em;
+    margin-top: 4px;
+    font-style: italic;
+    color: #7a4a00;
+}
+
+.pf2e-keyring .keyring-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.85em;
+}
+
+.pf2e-keyring .keyring-badge--held {
+    background: #2c5f8a;
+    color: #fff;
+}
+
+.pf2e-keyring .keyring-badge--missing {
+    background: rgba(0, 0, 0, 0.08);
+}
+
+.pf2e-keyring .keyring-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    min-width: 220px;
+}
+
+.pf2e-keyring .keyring-btn .keyring-btn-subicon {
+    font-size: 0.72em;
+    margin-left: 1px;
+    opacity: 0.85;
+}
+
+.pf2e-keyring .keyring-actions select {
+    min-width: 120px;
+    max-width: 160px;
+}
+
+.pf2e-keyring .keyring-btn {
+    border: 1px solid var(--color-border-light-tertiary, #bbb);
+    background: var(--button-background-color, #f0f0f0);
+    border-radius: 3px;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.pf2e-keyring .keyring-btn:hover {
+    filter: brightness(0.97);
+}
+
+.pf2e-keyring .keyring-btn--primary {
+    background: #2c5f8a;
+    border-color: #245173;
+    color: #fff;
+}
+
+.pf2e-keyring .keyring-btn--danger {
+    color: #8a2c2c;
+}
+
+.pf2e-keyring .keyring-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.pf2e-keyring .keyring-form-grid label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pf2e-keyring .keyring-span-2 {
+    grid-column: span 2;
+}
+
+.pf2e-keyring .keyring-toggle {
+    flex-direction: row !important;
+    align-items: center;
+    gap: 8px !important;
+}
+
+.pf2e-keyring .keyring-form-grid input,
+.pf2e-keyring .keyring-form-grid textarea,
+.pf2e-keyring .keyring-form-grid select {
+    width: 100%;
+}
+
+.pf2e-keyring .keyring-drag-over {
+    outline: 2px dashed #2c5f8a;
+}
+
+.pf2e-keyring .keyring-markup-preview {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pf2e-keyring .keyring-markup-preview code {
+    display: block;
+    padding: 6px 8px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+    font-size: 0.85em;
+    word-break: break-all;
+}
+
+.pf2e-keyring .keyring-form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.pf2e-keyring .keyring-empty {
+    margin: 0;
+    opacity: 0.75;
+    font-style: italic;
+}
+
+/* Persistent HUD */
+.pf2e-keyring-hud {
+    position: fixed;
+    left: 10px;
+    bottom: 56px;
+    top: auto;
+    z-index: 95;
+    width: min(300px, calc(100vw - 20px));
+    background: rgba(0, 0, 0, 0.72);
+    color: #f2f2f2;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    font-size: 0.88em;
+    pointer-events: auto;
+}
+
+.pf2e-keyring-hud.is-collapsed .keyring-hud-body {
+    display: none;
+}
+
+.pf2e-keyring-hud.has-custom-position {
+    bottom: auto;
+}
+
+.pf2e-keyring-hud.is-dragging {
+    opacity: 0.92;
+    user-select: none;
+}
+
+.pf2e-keyring-hud .keyring-hud-header {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pf2e-keyring-hud .keyring-hud-drag {
+    border: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    color: inherit;
+    padding: 0 8px;
+    cursor: grab;
+    opacity: 0.75;
+}
+
+.pf2e-keyring-hud .keyring-hud-drag:active {
+    cursor: grabbing;
+}
+
+.pf2e-keyring-hud .keyring-hud-drag:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.pf2e-keyring-hud.is-collapsed .keyring-hud-header {
+    border-bottom: none;
+}
+
+.pf2e-keyring-hud .keyring-hud-collapse {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 8px 10px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.pf2e-keyring-hud .keyring-hud-collapse:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.pf2e-keyring-hud .keyring-hud-title {
+    font-weight: 600;
+}
+
+.pf2e-keyring-hud .keyring-hud-chevron {
+    margin-left: auto;
+    opacity: 0.75;
+    font-size: 0.85em;
+}
+
+.pf2e-keyring-hud .keyring-hud-edit {
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    color: inherit;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.pf2e-keyring-hud .keyring-hud-edit:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.pf2e-keyring-hud .keyring-hud-body {
+    padding: 8px 10px 10px;
+}
+
+.pf2e-keyring-hud .keyring-hud-subtitle {
+    margin: 0 0 8px;
+    opacity: 0.8;
+    font-size: 0.92em;
+}
+
+.pf2e-keyring-hud .keyring-hud-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.pf2e-keyring-hud .keyring-hud-item {
+    padding: 6px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.pf2e-keyring-hud .keyring-hud-item--held {
+    border-left: 3px solid #4a9fd8;
+}
+
+.pf2e-keyring-hud .keyring-hud-item--missing {
+    border-left: 3px solid rgba(255, 255, 255, 0.2);
+    opacity: 0.85;
+}
+
+.pf2e-keyring-hud .keyring-hud-item-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.pf2e-keyring-hud .keyring-hud-name {
+    font-weight: 600;
+}
+
+.pf2e-keyring-hud .keyring-hud-status {
+    font-size: 0.85em;
+    opacity: 0.85;
+}
+
+.pf2e-keyring-hud .keyring-hud-holder {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.9em;
+    opacity: 0.9;
+}
+
+.pf2e-keyring-hud .keyring-hud-holder::before {
+    content: "→ ";
+}
+
+.pf2e-keyring-hud .keyring-hud-desc,
+.pf2e-keyring-hud .keyring-hud-gm {
+    margin-top: 4px;
+    font-size: 0.88em;
+    opacity: 0.8;
+}
+
+.pf2e-keyring-hud .keyring-hud-gm {
+    color: #ffcc80;
+    font-style: italic;
+}
+
+.pf2e-keyring-hud .keyring-hud-empty {
+    opacity: 0.75;
+    font-style: italic;
+    padding: 4px 2px;
+}

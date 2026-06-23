@@ -1,0 +1,165 @@
+<div class="keyring-panel">
+    <header class="keyring-header">
+        <p class="keyring-kicker">{{localize "PF2E_KEYRING.Panel.Kicker"}}</p>
+        <h2>{{localize "PF2E_KEYRING.Panel.Title"}}</h2>
+    </header>
+
+    <section class="keyring-section keyring-section--tracker">
+        <div class="keyring-section-head">
+            <h3>{{localize "PF2E_KEYRING.Panel.Tracker"}}</h3>
+            {{#if isGM}}
+            <button type="button" data-keyring-panel="reset-all" class="keyring-btn keyring-btn--danger">
+                <i class="fa-solid fa-rotate-left"></i> {{localize "PF2E_KEYRING.Panel.ResetAll"}}
+            </button>
+            {{/if}}
+        </div>
+
+        {{#if keys.length}}
+        <table class="keyring-table">
+            <thead>
+                <tr>
+                    <th>{{localize "PF2E_KEYRING.Panel.ColName"}}</th>
+                    <th>{{localize "PF2E_KEYRING.Panel.ColStatus"}}</th>
+                    <th>{{localize "PF2E_KEYRING.Panel.ColHolder"}}</th>
+                    {{#if isGM}}<th>{{localize "PF2E_KEYRING.Panel.ColActions"}}</th>{{/if}}
+                </tr>
+            </thead>
+            <tbody>
+                {{#each keys}}
+                <tr data-key-id="{{this.id}}">
+                    <td>
+                        <strong>{{this.name}}</strong>
+                        {{#if this.descriptionPublic}}
+                        <div class="keyring-muted">{{this.descriptionPublic}}</div>
+                        {{/if}}
+                        {{#if ../isGM}}
+                        {{#if this.descriptionGm}}
+                        <div class="keyring-gm-note" data-visibility="gm">{{this.descriptionGm}}</div>
+                        {{/if}}
+                        {{/if}}
+                    </td>
+                    <td>
+                        {{#if this.isHeld}}
+                        <span class="keyring-badge keyring-badge--held">{{localize "PF2E_KEYRING.State.Held"}}</span>
+                        {{else}}
+                        <span class="keyring-badge keyring-badge--missing">{{localize "PF2E_KEYRING.State.Missing"}}</span>
+                        {{/if}}
+                    </td>
+                    <td>{{this.holderLabel}}</td>
+                    {{#if ../isGM}}
+                    <td class="keyring-actions">
+                        <select data-keyring-panel="holder" data-key-id="{{this.id}}">
+                            {{#each this.holderOptions}}
+                            <option value="{{this.id}}" {{#if this.selected}}selected{{/if}}>{{this.label}}</option>
+                            {{/each}}
+                        </select>
+                        <button type="button" class="keyring-btn" data-keyring-panel="edit" data-key-id="{{this.id}}" title="{{localize "PF2E_KEYRING.Panel.Edit"}}">
+                            <i class="fa-solid fa-pen"></i>
+                        </button>
+                        <button type="button" class="keyring-btn" data-keyring-panel="copy-take" data-key-id="{{this.id}}" title="{{localize "PF2E_KEYRING.Panel.CopyTake"}}">
+                            <i class="fa-solid fa-key"></i>
+                        </button>
+                        <button type="button" class="keyring-btn" data-keyring-panel="post-take" data-key-id="{{this.id}}" title="{{localize "PF2E_KEYRING.Panel.PostTake"}}">
+                            <i class="fa-solid fa-comment"></i><i class="fa-solid fa-key keyring-btn-subicon"></i>
+                        </button>
+                        <button type="button" class="keyring-btn" data-keyring-panel="copy-check" data-key-id="{{this.id}}" title="{{localize "PF2E_KEYRING.Panel.CopyCheck"}}">
+                            <i class="fa-solid fa-door-open"></i>
+                        </button>
+                        <button type="button" class="keyring-btn" data-keyring-panel="post-check" data-key-id="{{this.id}}" title="{{localize "PF2E_KEYRING.Panel.PostCheck"}}">
+                            <i class="fa-solid fa-comment"></i><i class="fa-solid fa-door-open keyring-btn-subicon"></i>
+                        </button>
+                        <button type="button" class="keyring-btn keyring-btn--danger" data-keyring-panel="delete" data-key-id="{{this.id}}" title="{{localize "PF2E_KEYRING.Panel.Delete"}}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </td>
+                    {{/if}}
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p class="keyring-empty">{{localize "PF2E_KEYRING.Panel.Empty"}}</p>
+        {{/if}}
+    </section>
+
+    {{#if isGM}}
+    <section class="keyring-section keyring-section--editor">
+        <h3>{{#if editingId}}{{localize "PF2E_KEYRING.Panel.EditKey"}}{{else}}{{localize "PF2E_KEYRING.Panel.NewKey"}}{{/if}}</h3>
+
+        <div class="keyring-form-grid">
+            <label>
+                <span>{{localize "PF2E_KEYRING.Panel.FieldId"}}</span>
+                <input type="text" name="id" value="{{form.id}}" {{#if editingId}}readonly{{/if}} placeholder="brass-key">
+            </label>
+            <label>
+                <span>{{localize "PF2E_KEYRING.Panel.FieldName"}}</span>
+                <input type="text" name="name" value="{{form.name}}" placeholder="{{localize "PF2E_KEYRING.Panel.NamePlaceholder"}}">
+            </label>
+            <label class="keyring-span-2">
+                <span>{{localize "PF2E_KEYRING.Panel.FieldPublic"}}</span>
+                <textarea name="descriptionPublic" rows="2">{{form.descriptionPublic}}</textarea>
+            </label>
+            <label class="keyring-span-2">
+                <span>{{localize "PF2E_KEYRING.Panel.FieldGm"}}</span>
+                <textarea name="descriptionGm" rows="2">{{form.descriptionGm}}</textarea>
+            </label>
+            <label class="keyring-span-2">
+                <span>{{localize "PF2E_KEYRING.Panel.FieldLinkedItem"}}</span>
+                <input type="text" name="linkedItemUuid" value="{{form.linkedItemUuid}}" placeholder="@UUID[Compendium...]{Label}" data-keyring-drop="linked-item">
+            </label>
+            <label>
+                <span>{{localize "PF2E_KEYRING.Panel.FieldLinkMode"}}</span>
+                <select name="linkMode">
+                    {{#each linkModes}}
+                    <option value="{{this.value}}" {{#if this.selected}}selected{{/if}}>{{this.label}}</option>
+                    {{/each}}
+                </select>
+            </label>
+            <label>
+                <span>{{localize "PF2E_KEYRING.Panel.FieldTransferMode"}}</span>
+                <select name="transferMode">
+                    <option value="">{{localize "PF2E_KEYRING.Panel.TransferDefault"}}</option>
+                    {{#each transferModes}}
+                    <option value="{{this.value}}" {{#if this.selected}}selected{{/if}}>{{this.label}}</option>
+                    {{/each}}
+                </select>
+            </label>
+            <label class="keyring-span-2">
+                <span>{{localize "PF2E_KEYRING.Panel.FieldCheckSuccess"}}</span>
+                <textarea name="checkSuccessText" rows="2">{{form.checkSuccessText}}</textarea>
+            </label>
+            <label class="keyring-span-2">
+                <span>{{localize "PF2E_KEYRING.Panel.FieldCheckFailure"}}</span>
+                <textarea name="checkFailureText" rows="2">{{form.checkFailureText}}</textarea>
+            </label>
+            <label class="keyring-toggle">
+                <input type="checkbox" name="consumable" {{#if form.consumable}}checked{{/if}}>
+                <span>{{localize "PF2E_KEYRING.Panel.FieldConsumable"}}</span>
+            </label>
+        </div>
+
+        <div class="keyring-markup-preview">
+            <strong>{{localize "PF2E_KEYRING.Panel.MarkupPreview"}}</strong>
+            <code data-keyring-preview="take">{{markup.take}}</code>
+            <code data-keyring-preview="check">{{markup.check}}</code>
+        </div>
+
+        <div class="keyring-form-actions">
+            <button type="button" class="keyring-btn keyring-btn--primary" data-keyring-panel="save">
+                <i class="fa-solid fa-floppy-disk"></i> {{localize "PF2E_KEYRING.Panel.Save"}}
+            </button>
+            {{#if editingId}}
+            <button type="button" class="keyring-btn" data-keyring-panel="cancel-edit">
+                {{localize "PF2E_KEYRING.Panel.Cancel"}}
+            </button>
+            {{/if}}
+            <button type="button" class="keyring-btn" data-keyring-panel="post-form-take">
+                <i class="fa-solid fa-comment"></i> {{localize "PF2E_KEYRING.Panel.PostTake"}}
+            </button>
+            <button type="button" class="keyring-btn" data-keyring-panel="post-form-check">
+                <i class="fa-solid fa-comment"></i> {{localize "PF2E_KEYRING.Panel.PostCheck"}}
+            </button>
+        </div>
+    </section>
+    {{/if}}
+</div>
