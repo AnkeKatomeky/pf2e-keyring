@@ -46,10 +46,7 @@ export function actorHasLinkedItem(actor, uuid) {
 
     for (const item of actor.items) {
         if (item.uuid === uuid) return true;
-        const source =
-            item._stats?.compendiumSource ??
-            item.flags?.core?.sourceId ??
-            "";
+        const source = item.flags?.core?.sourceId ?? "";
         if (source === uuid) return true;
     }
 
